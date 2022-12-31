@@ -38,6 +38,7 @@ window.onload = function(){
     function clearNumber(mathA) {
         currentGuessNum = []
         console.log("clearNumber")
+        console.log("mathA: ", mathA , typeof mathA)
         if(mathA == 4){
             guessResult.innerHTML = "<span>4A</span>";
             keyboard.removeEventListener("click",showup,false);
@@ -100,13 +101,15 @@ window.onload = function(){
         }
 
         clearNumber(mathA)
+
+        window.scrollTo(0,document.body.scrollHeight)
     }
 
     // 專門用來檢查重複輸入數字的行為
     var currentGuessNum = [];
 
     function showup(event){
-
+        console.log("showup")
         var same = true;
 
         if(event.target.id == "resetNum" || event.target.id =="sendNum" || event.target.id == "keyboard"){
@@ -137,7 +140,7 @@ window.onload = function(){
                 same = true;
             }
 
-        }else{
+        }else if(currentGuessNum.length <= 1 && guessArea.children.length < 4){
             guessArea.innerHTML += `<span>${event.target.innerHTML}</span>`
 
         }
@@ -148,7 +151,7 @@ window.onload = function(){
         //     guessArea.innerHTML += `<span>${event.target.innerHTML}</span>`
         // }
 
-        while(guessArea.children.length == 4){
+        if(guessArea.children.length >= 4){
             guessNum = guessArea.innerText
             console.log("guessNum: " , guessNum,typeof guessNum)
 
@@ -157,7 +160,7 @@ window.onload = function(){
             // 四個數字才綁定配對事件監聽
             sendNum.addEventListener("click",matchNumber,false);
 
-            break;
+            
         }
 
 

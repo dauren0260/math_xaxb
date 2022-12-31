@@ -33,6 +33,7 @@ span{
 }
 
 
+
 .title{
     font-size: 30px;
     font-family: 'Montserrat', sans-serif;
@@ -95,3 +96,16 @@ span{
     cursor: pointer;
 }
 
+@media screen and (max-width: 376px){
+    .combo,.keyboard,.title{
+        width: auto;
+    }
+
+    .result{
+        width: 100px;
+    }
+    
+    .keyboard{
+        margin-left:-191px;
+    }
+}
